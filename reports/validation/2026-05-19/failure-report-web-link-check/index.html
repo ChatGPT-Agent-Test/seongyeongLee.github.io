@@ -20,7 +20,8 @@
         <div class="kicker">Validation Report</div>
         <h1>Failure Report Web Link Check</h1>
         <p>
-          기존 실패 보고서 Markdown을 웹 허브에 연결하고, GitHub Pages 기준의 탐색 경로가 끊기지 않도록 상세 페이지와 인덱스를 함께 갱신한 작업에 대한 검증 보고서입니다.
+          기존 실패 보고서 Markdown을 웹 허브에 연결하고, GitHub Pages 기준의 탐색 경로가
+          끊기지 않도록 상세 페이지와 인덱스를 함께 갱신한 작업에 대한 검증 보고서입니다.
         </p>
       </header>
 
@@ -33,13 +34,13 @@
           <h3>작업 종류</h3>
           <strong>검증 보고</strong>
         </article>
-        <article class="stat">
+        <article class="stat status-success">
           <h3>상태</h3>
           <strong><span class="badge success">성공</span></strong>
         </article>
-        <article class="stat">
-          <h3>생성 시각</h3>
-          <strong>2026-05-19 11:19:00 KST</strong>
+        <article class="stat status-partial">
+          <h3>확인 여부</h3>
+          <strong><span class="badge review-pending">미확인</span></strong>
         </article>
       </section>
 
@@ -59,7 +60,8 @@
           <ul>
             <li><code>reports/index.html</code></li>
             <li><code>reports/validation/index.html</code></li>
-            <li><code>reports/validation/2026-05-19/preview-failure-report/index.html</code></li>
+            <li><code>reports/external-references/index.html</code></li>
+            <li><code>reports/external-references/2026-05-19/preview-failure-report/index.html</code></li>
             <li><code>reports/validation/2026-05-19/failure-report-web-link-check/index.html</code></li>
           </ul>
         </article>
@@ -71,20 +73,21 @@
           <h3>실패 보고서 웹 연결 방식</h3>
           <ul>
             <li>원본 Markdown 파일은 그대로 유지했습니다.</li>
-            <li>동일 내용을 참조하는 HTML 상세 페이지를 <code>reports/validation/2026-05-19/preview-failure-report/</code> 아래에 추가했습니다.</li>
-            <li>루트 허브와 validation 인덱스에서 이 상세 페이지로 이동할 수 있게 상대 링크를 연결했습니다.</li>
+            <li>외부 참조 카테고리 아래에 HTML 상세 페이지를 추가했습니다.</li>
+            <li>루트 허브와 external-references 인덱스에서 이 상세 페이지로 이동할 수 있게 상대 링크를 연결했습니다.</li>
             <li>상세 페이지 안에서는 원본 Markdown으로 되돌아가는 링크도 함께 제공했습니다.</li>
           </ul>
         </article>
         <article class="detail">
           <div class="kicker">Pages</div>
-          <h3>GitHub Pages 확인 결과</h3>
+          <h3>GitHub Pages 확인 관점</h3>
           <p>
-            공개 URL <code>https://seongyeonglee.github.io/reports/</code>에서 루트 허브, validation 인덱스,
-            두 개의 상세 페이지가 모두 열리는 것을 확인했습니다.
+            모든 링크는 <code>reports/</code> 루트를 기준으로 상대 경로를 사용하도록 정리했습니다.
+            서버 없이 정적으로 열리는 구조라 GitHub Pages 공개 경로에서도 같은 방식으로 탐색할 수 있습니다.
           </p>
           <p>
-            상대 경로는 <code>reports/</code> 루트를 기준으로 다시 조정했고, 상세 페이지의 breadcrumb와 원본 Markdown 링크도 같은 기준으로 맞췄습니다.
+            이번 검증은 구조 검증 기준으로 작성했고, 실제 공개 URL 최종 확인은 저장소 반영 직후
+            GitHub Pages 동기화 시점에 다시 점검하면 됩니다.
           </p>
         </article>
       </section>
@@ -94,24 +97,24 @@
         <h2>시나리오 테스트 목록</h2>
         <div class="list" style="margin-top: 20px">
           <article class="detail">
-            <h3>시나리오 1. 루트 허브에서 validation 인덱스로 이동</h3>
-            <p>기대 결과: <code>reports/index.html</code>의 Validation Reports 카드가 <code>validation/index.html</code>로 이동한다.</p>
-            <p>실제 결과: 공개 URL에서 validation 인덱스가 정상적으로 열렸다.</p>
+            <h3>시나리오 1. 루트 허브에서 external-references 인덱스로 이동</h3>
+            <p>기대 결과: <code>reports/index.html</code>의 External References 카드가 <code>external-references/index.html</code>로 이동한다.</p>
+            <p>실제 결과: 루트 허브에서 해당 카테고리 카드 링크를 제공하도록 정리했다.</p>
           </article>
           <article class="detail">
-            <h3>시나리오 2. validation 인덱스에서 실패 보고서 HTML 상세 페이지 열기</h3>
+            <h3>시나리오 2. external-references 인덱스에서 실패 보고서 HTML 상세 페이지 열기</h3>
             <p>기대 결과: <code>2026-05-19/preview-failure-report/index.html</code> 상세 페이지가 열린다.</p>
-            <p>실제 결과: 공개 URL에서 상세 페이지가 정상적으로 열렸다.</p>
+            <p>실제 결과: 외부 참조 카테고리의 목록 항목에서 상세 페이지로 연결되도록 반영했다.</p>
           </article>
           <article class="detail">
             <h3>시나리오 3. 실패 보고서 상세 페이지에서 원본 Markdown 열기</h3>
             <p>기대 결과: HTML 상세 페이지 안의 원본 링크가 <code>reports/preview-failure-report-2026-05-19.md</code>를 연다.</p>
-            <p>실제 결과: 상대 경로를 <code>../../../preview-failure-report-2026-05-19.md</code>로 수정해 <code>reports/</code> 루트의 Markdown 원본을 가리키도록 바로잡았다.</p>
+            <p>실제 결과: 상대 경로를 <code>../../../preview-failure-report-2026-05-19.md</code>로 유지해 루트의 Markdown 원본을 가리키도록 맞췄다.</p>
           </article>
           <article class="detail">
-            <h3>시나리오 4. 루트 허브에서 이번 검증 보고서 열기</h3>
-            <p>기대 결과: 최신 보고서 미리보기에서 현재 검증 보고서 상세 페이지가 열린다.</p>
-            <p>실제 결과: 공개 URL에서 현재 검증 보고서 상세 페이지가 정상적으로 열렸다.</p>
+            <h3>시나리오 4. 실패 성격이 목록과 상세에서 더 강하게 보이는가</h3>
+            <p>기대 결과: 실패 카드와 상세 배너가 일반 성공 보고서보다 눈에 띄는 경고형 스타일을 가진다.</p>
+            <p>실제 결과: 외부 참조 카테고리와 상세 페이지에 실패 배경, 보더, 그림자를 적용했다.</p>
           </article>
         </div>
       </section>
@@ -121,13 +124,14 @@
           <div class="kicker">Final Status</div>
           <h3>최종 상태</h3>
           <p><span class="badge success">성공</span></p>
-          <p>기존 Markdown 실패 보고서를 웹 탐색 구조에 연결했고, 인덱스와 상세 페이지를 함께 정리했습니다.</p>
+          <p>기존 Markdown 실패 보고서를 외부 참조 카테고리와 웹 탐색 구조에 연결했고, 상태 강조 규칙도 함께 정리했습니다.</p>
         </article>
         <article class="detail">
           <div class="kicker">Next</div>
           <h3>후속 조치</h3>
           <p>
-            같은 패턴으로 이후 검증 보고서도 날짜별 상세 페이지와 validation 인덱스에 추가하면 Pages 기준 탐색 구조를 일관되게 유지할 수 있습니다.
+            사용자가 이 실패 분석을 검토 완료했다고 알려주면 external-references 인덱스와 상세 페이지의
+            <code>미확인</code> 배지를 <code>확인 완료</code>로 바꾸면 됩니다.
           </p>
         </article>
       </section>
