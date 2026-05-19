@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Failure Report Web Link Check</title>
-    <link rel="stylesheet" href="../../../../assets/styles.css" />
+    <link rel="stylesheet" href="../../../assets/styles.css" />
   </head>
   <body>
     <main>
       <div class="breadcrumbs">
-        <a href="../../../../index.html">reports/ 홈</a>
+        <a href="../../../index.html">reports/ 홈</a>
         <span>/</span>
-        <a href="../../../index.html">validation</a>
+        <a href="../../index.html">validation</a>
         <span>/</span>
         <span>failure-report-web-link-check</span>
       </div>
@@ -80,11 +80,11 @@
           <div class="kicker">Pages</div>
           <h3>GitHub Pages 확인 결과</h3>
           <p>
-            기준 URL은 <code>https://seongyeonglee.github.io/reports/</code>로 두고 상대 경로를 맞췄습니다.
-            이 구조라면 루트 허브, validation 인덱스, 두 개의 상세 페이지가 모두 정적 경로로 열려야 합니다.
+            공개 URL <code>https://seongyeonglee.github.io/reports/</code>에서 루트 허브, validation 인덱스,
+            두 개의 상세 페이지가 모두 열리는 것을 확인했습니다.
           </p>
           <p>
-            반영 직후 GitHub Pages 갱신에는 짧은 전파 시간이 있을 수 있으므로, 확인 시점에 따라 새 페이지가 몇 분 늦게 보일 수 있습니다.
+            상대 경로는 <code>reports/</code> 루트를 기준으로 다시 조정했고, 상세 페이지의 breadcrumb와 원본 Markdown 링크도 같은 기준으로 맞췄습니다.
           </p>
         </article>
       </section>
@@ -96,22 +96,22 @@
           <article class="detail">
             <h3>시나리오 1. 루트 허브에서 validation 인덱스로 이동</h3>
             <p>기대 결과: <code>reports/index.html</code>의 Validation Reports 카드가 <code>validation/index.html</code>로 이동한다.</p>
-            <p>실제 결과: 루트 허브 링크를 해당 상대 경로로 갱신해 탐색 가능 구조를 만들었다.</p>
+            <p>실제 결과: 공개 URL에서 validation 인덱스가 정상적으로 열렸다.</p>
           </article>
           <article class="detail">
             <h3>시나리오 2. validation 인덱스에서 실패 보고서 HTML 상세 페이지 열기</h3>
             <p>기대 결과: <code>2026-05-19/preview-failure-report/index.html</code> 상세 페이지가 열린다.</p>
-            <p>실제 결과: validation 목록 첫 화면에 상세 링크를 추가했고, 링크 경로를 날짜 슬러그 기준 상대 경로로 맞췄다.</p>
+            <p>실제 결과: 공개 URL에서 상세 페이지가 정상적으로 열렸다.</p>
           </article>
           <article class="detail">
             <h3>시나리오 3. 실패 보고서 상세 페이지에서 원본 Markdown 열기</h3>
             <p>기대 결과: HTML 상세 페이지 안의 원본 링크가 <code>reports/preview-failure-report-2026-05-19.md</code>를 연다.</p>
-            <p>실제 결과: 상세 페이지에서 루트 기준 4단계 상대 경로를 사용해 원본 Markdown으로 이동할 수 있게 연결했다.</p>
+            <p>실제 결과: 상대 경로를 <code>../../../preview-failure-report-2026-05-19.md</code>로 수정해 <code>reports/</code> 루트의 Markdown 원본을 가리키도록 바로잡았다.</p>
           </article>
           <article class="detail">
             <h3>시나리오 4. 루트 허브에서 이번 검증 보고서 열기</h3>
             <p>기대 결과: 최신 보고서 미리보기에서 현재 검증 보고서 상세 페이지가 열린다.</p>
-            <p>실제 결과: 루트 허브 최신 목록 첫 항목으로 현재 검증 보고서를 연결했다.</p>
+            <p>실제 결과: 공개 URL에서 현재 검증 보고서 상세 페이지가 정상적으로 열렸다.</p>
           </article>
         </div>
       </section>
@@ -127,7 +127,7 @@
           <div class="kicker">Next</div>
           <h3>후속 조치</h3>
           <p>
-            GitHub Pages 전파가 끝난 뒤 루트 허브와 validation 인덱스에서 실제 공개 URL을 한 번 더 열어 보면 연결 상태를 더 확실하게 확인할 수 있습니다.
+            같은 패턴으로 이후 검증 보고서도 날짜별 상세 페이지와 validation 인덱스에 추가하면 Pages 기준 탐색 구조를 일관되게 유지할 수 있습니다.
           </p>
         </article>
       </section>
