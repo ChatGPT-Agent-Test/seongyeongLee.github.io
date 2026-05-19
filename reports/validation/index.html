@@ -20,30 +20,51 @@
         <p>접근성, 연결성, 배포 가능 여부, 실행 점검처럼 현재 상태를 확인하는 보고서를 이곳에서 관리합니다.</p>
       </header>
 
-      <section class="list">
-        <a class="list-item" href="2026-05-19/failure-report-web-link-check/index.html">
+      <section class="summary-grid">
+        <article class="stat status-success">
+          <h3>총 보고서</h3>
+          <strong>2건</strong>
+        </article>
+        <article class="stat status-success">
+          <h3>성공</h3>
+          <strong>2건</strong>
+        </article>
+        <article class="stat status-partial">
+          <h3>미확인</h3>
+          <strong>2건</strong>
+        </article>
+        <article class="stat">
+          <h3>카테고리 상태</h3>
+          <strong>배지 규칙 적용 완료</strong>
+        </article>
+      </section>
+
+      <section class="list section">
+        <a class="list-item report-card status-success" href="2026-05-19/report-status-ui-refresh-check/index.html">
           <div class="item-meta">
             <span class="badge success">성공</span>
+            <span class="badge review-pending">미확인</span>
+            <span class="badge neutral">2026-05-19</span>
+            <span class="badge neutral">UI 규칙 검증</span>
+          </div>
+          <h3>Report Status UI Refresh Check</h3>
+          <p>
+            보고서 허브의 상태 색상, 실패 강조 스타일, 카테고리 링크, 확인 여부 배지가 실제
+            HTML 구조 안에서 일관되게 표시되는지 점검한 검증 보고서입니다.
+          </p>
+        </a>
+
+        <a class="list-item report-card status-success" href="2026-05-19/failure-report-web-link-check/index.html">
+          <div class="item-meta">
+            <span class="badge success">성공</span>
+            <span class="badge review-pending">미확인</span>
             <span class="badge neutral">2026-05-19</span>
             <span class="badge neutral">웹 연결 검증</span>
           </div>
           <h3>Failure Report Web Link Check</h3>
           <p>
-            기존 Markdown 실패 보고서를 HTML 탐색 구조에 연결하고, 루트 허브와 validation 인덱스,
-            상세 보고서 간 상대 링크가 GitHub Pages 경로에서 탐색 가능한지 점검한 검증 보고서입니다.
-          </p>
-        </a>
-
-        <a class="list-item" href="2026-05-19/preview-failure-report/index.html">
-          <div class="item-meta">
-            <span class="badge neutral">참조 보고서</span>
-            <span class="badge neutral">2026-05-19</span>
-            <span class="badge neutral">실패 분석</span>
-          </div>
-          <h3>미리보기 실패 분석 보고서</h3>
-          <p>
-            <code>reports/preview-failure-report-2026-05-19.md</code> 내용을 그대로 따라가되,
-            웹 허브 안에서 바로 열 수 있는 HTML 상세 페이지로 재구성한 항목입니다.
+            기존 실패 보고서 Markdown을 HTML 탐색 구조에 연결하고, 루트 허브와 validation
+            인덱스, 상세 보고서 간 상대 링크가 GitHub Pages 경로에서 동작하는지 점검한 보고서입니다.
           </p>
         </a>
       </section>
