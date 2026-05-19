@@ -8,7 +8,8 @@
   - Created a static HTML report set under `reports/`.
   - Added change report, diagnostic report, external reference placeholder, and root/category index pages.
   - Added a Git upload readiness note file.
+  - Uploaded the report set and root log files to `seongyeongLee/seongyeongLee.github.io` on `main`.
 - Remaining:
   - Receive the original report file.
   - Place the source file into the external references folder and update its index page.
-  - Connect or choose the destination Git repository and commit/push if requested.
+  - Upload the packaged zip separately if it also needs to live in the repository.
