@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="개발 작업 리포트 허브에서 선택한 보고서의 상세 내용과 조회 상태를 확인합니다."
+    />
+    <meta name="app-base-path" content="" />
+    <title>보고서 상세</title>
+    <link rel="stylesheet" href="../assets/css/detail.css" />
+  </head>
+  <body>
+    <noscript>
+      <div class="detail-layout">
+        <section class="detail-meta">
+          자바스크립트가 비활성화되어 있어 보고서 상세 화면을 정상적으로 표시할 수 없습니다.
+        </section>
+      </div>
+    </noscript>
+
+    <main class="detail-layout">
+      <a id="backLink" href="../index.html" class="back-link">← 목록으로 돌아가기</a>
+      <header id="detailHeader" class="detail-header">
+        <h1>보고서를 불러오는 중입니다.</h1>
+        <p>선택한 보고서의 메타데이터와 본문을 확인하고 있습니다.</p>
+      </header>
+      <section id="detailMeta" class="detail-meta">
+        상세 메타데이터를 불러오는 중입니다.
+      </section>
+      <section id="detailActions" class="detail-meta">
+        상세 화면 동작을 준비하는 중입니다.
+      </section>
+      <article id="detailContent" class="detail-content">
+        <p>보고서 본문을 불러오는 중입니다.</p>
+      </article>
+      <section id="detailNotice" class="detail-meta" hidden>
+        추가 안내가 있을 때 이 영역에 표시됩니다.
+      </section>
+    </main>
+
+    <script src="../assets/js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../assets/js/supabase-client.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/markdown.js"></script>
+    <script src="../assets/js/detail.js"></script>
+  </body>
+</html>
