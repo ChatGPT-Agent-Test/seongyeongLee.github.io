@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-21T08:59:13+09:00",
+  "generated_at": "2026-05-21T09:49:11+09:00",
   "timezone": "Asia/Seoul",
   "site": {
     "title": "개발 작업 리포트 허브",
@@ -205,7 +205,7 @@
       "file_path": "reports/test-result/2026-05-21-test-result-root-base-path-system-log-fix.md",
       "detail_page_path": "pages/report-detail.html?reportId=rpt_20260521_003",
       "created_at": "2026-05-21T08:56:00+09:00",
-      "updated_at": "2026-05-21T08:59:00+09:00",
+      "updated_at": "2026-05-21T09:49:00+09:00",
       "project_key": "report-hub-root-base-path-system-log-fix"
     },
     {
