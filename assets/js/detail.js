@@ -9,6 +9,15 @@ function getDetailSupabaseStatusSummary() {
   };
 }
 
+function escapeDetailHtml(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function buildDetailLogContext(extra = {}) {
   return {
     source: 'client',
@@ -86,6 +95,25 @@ async function renderDetailContent(report) {
   detailContent.innerHTML = parseSimpleMarkdown(markdown);
 }
 
+function renderDetailContentError(report, error) {
+  const detailContent = document.getElementById('detailContent');
+  if (!detailContent) return;
+
+  const requestPath = error?.requestPath ?? buildAppPath(report.file_path);
+  const statusText = error?.status
+    ? `${error.status} ${error.statusText ?? ''}`.trim()
+    : error?.message ?? '알 수 없는 오류';
+
+  detailContent.innerHTML = `
+    <h2>본문을 불러오지 못했습니다.</h2>
+    <p>보고서 메타데이터는 정상으로 표시되었지만 Markdown 본문 파일을 읽지 못했습니다.</p>
+    <div class="meta-grid">
+      <div class="meta-card"><strong>요청 경로</strong><div>${escapeDetailHtml(requestPath)}</div></div>
+      <div class="meta-card"><strong>오류 상태</strong><div>${escapeDetailHtml(statusText)}</div></div>
+    </div>
+  `;
+}
+
 async function bindAcknowledgeAction(reportId, viewerId, connectionState) {
   const button = document.getElementById('acknowledgeButton');
   if (!button) return;
@@ -141,7 +169,23 @@ async function initDetail() {
   renderDetailHeader(report);
   renderDetailMeta(report, connectionState);
   renderDetailActions(connectionState);
-  await renderDetailContent(report);
+
+  try {
+    await renderDetailContent(report);
+  } catch (error) {
+    console.error(error);
+    renderDetailContentError(report, error);
+    await writeDetailLogSafely('ERROR', '보고서 Markdown 본문 파일을 불러오지 못했습니다.', {
+      reportId: report.report_id,
+      projectKey: report.project_key ?? null,
+      eventName: 'report_markdown_load_failed',
+      filePath: report.file_path,
+      requestPath: error?.requestPath ?? buildAppPath(report.file_path),
+      status: error?.status ?? null,
+      statusText: error?.statusText ?? null,
+      errorMessage: error?.message ?? String(error)
+    });
+  }
 
   await insertReportView(report.report_id, viewer.viewerId, {
     page: 'report-detail',

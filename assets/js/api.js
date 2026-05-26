@@ -1,16 +1,30 @@
 async function fetchReports() {
-  const response = await fetch(buildAppPath('/data/reports.json'), {
+  const requestPath = buildAppPath('/data/reports.json');
+  const response = await fetch(requestPath, {
     cache: 'no-store'
   });
-  if (!response.ok) throw new Error('reports.json 파일을 불러오지 못했습니다.');
+  if (!response.ok) {
+    const error = new Error(`reports.json 파일을 불러오지 못했습니다. (${response.status} ${response.statusText})`);
+    error.status = response.status;
+    error.statusText = response.statusText;
+    error.requestPath = requestPath;
+    throw error;
+  }
   return response.json();
 }
 
 async function fetchMarkdownFile(path) {
-  const response = await fetch(buildAppPath(path), {
+  const requestPath = buildAppPath(path);
+  const response = await fetch(requestPath, {
     cache: 'no-store'
   });
-  if (!response.ok) throw new Error('Markdown 파일을 불러오지 못했습니다.');
+  if (!response.ok) {
+    const error = new Error(`Markdown 파일을 불러오지 못했습니다. (${response.status} ${response.statusText})`);
+    error.status = response.status;
+    error.statusText = response.statusText;
+    error.requestPath = requestPath;
+    throw error;
+  }
   return response.text();
 }
 
